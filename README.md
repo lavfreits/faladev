@@ -6,6 +6,7 @@ Este projeto é uma aplicação open source feita em Go no backend e React no fr
 
 - Go versão 1.21 ou superior
 - Conta no Google Console para criar credenciais de API
+- PostgreSQL instalado (ou acesso a um servidor PostgreSQL)
 
 ## Instalação
 
@@ -60,7 +61,12 @@ Este projeto é uma aplicação open source feita em Go no backend e React no fr
    - Adicione os URIs de redirecionamento autorizados. Exemplo: http://localhost:8080/callback
    - Salve as credenciais e anote o Client ID e Client Secret.
 
-4. **Configurar Variáveis de Ambiente:**
+4. **Criar um Banco de Dados no PostgreSQL:**
+ - Instale o PostgreSQL (ou obtenha acesso a um servidor PostgreSQL): Caso ainda não tenha, siga as instruções oficiais para instalar o PostgreSQL: [Instalação do PostgreSQL](https://www.postgresql.org/download/).
+
+ - Crie um database e anote o nome do banco de dados e do user, senha, host e número da porta.
+
+5. **Configurar Variáveis de Ambiente:**
 
    Crie um arquivo .env no diretório ./backend e adicione as seguintes variáveis, incluindo suas credenciais do Google:
 
@@ -69,10 +75,23 @@ Este projeto é uma aplicação open source feita em Go no backend e React no fr
    GOOGLE_REDIRECT_URL=http://localhost:8080/callback
    GOOGLE_CLIENT_ID=seu-client-id
    GOOGLE_CLIENT_SECRET=seu-client-secret
+
    DATABASE_URL=sua-string-de-conexao-postgresql
    ```
 
-5. **Instalar Dependências:**
+   A URL de conexão do PostgreSQL geralmente segue este formato:
+
+   ```
+   DATABASE_PORT=
+   DATABASE_USER=
+   DATABASE_HOST=
+   DATABASE_PASSWORD=
+   DATABASE_NAME=
+
+   DATABASE_URL="postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}"
+   ```
+
+6. **Instalar Dependências:**
 
    Execute o comando abaixo para instalar as dependências do projeto:
 
@@ -80,7 +99,7 @@ Este projeto é uma aplicação open source feita em Go no backend e React no fr
    make deps
    ```
 
-6. **Rodar o Projeto:**
+7. **Rodar o Projeto:**
 
    Para iniciar a aplicação, execute o comando:
 
@@ -90,7 +109,7 @@ Este projeto é uma aplicação open source feita em Go no backend e React no fr
    Na primeira vez que você rodar o projeto, você deverá acessar o link será gerado no console para autorizar o seu aplicativo na sua conta Google.
 
 
-7. **Para inspecionar o código:**
+8. **Para inspecionar o código:**
 
    Para verificar a conformidade do código com as diretrizes de estilo, utilize o seguinte comando:
 
